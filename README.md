@@ -1,2 +1,2 @@
 # vseinstrumenti_test
-vseinstrumenti test
+Use Runtests file to run test
