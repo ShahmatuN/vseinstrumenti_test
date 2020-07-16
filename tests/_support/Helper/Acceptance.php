@@ -1,8 +1,9 @@
 <?php
+
 namespace Helper;
 
-// here you can define custom actions
-// all public methods declared in helper class will be available in $I
+use Codeception\TestInterface;
+
 
 class Acceptance extends \Codeception\Module\WebDriver
 {
@@ -27,5 +28,13 @@ class Acceptance extends \Codeception\Module\WebDriver
 	{
 		parent::amOnPage($page);
 		$this->waitForPageLoaded();
+	}
+
+	public function _after(TestInterface $test)
+	{
+		[$w, $h] = explode('x', $this->config['window_size']);
+		$this->resizeWindow((int)$w, (int)$h);
+		$this->webDriver->manage()->deleteAllCookies();
+		return parent::_after($test);
 	}
 }
