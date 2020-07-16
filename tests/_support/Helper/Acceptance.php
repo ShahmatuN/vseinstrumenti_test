@@ -22,4 +22,10 @@ class Acceptance extends \Codeception\Module\WebDriver
 	{
 		$this->waitForJS('return document.readyState === "complete"', $timeout);
 	}
+
+	public function amOnPage($page)
+	{
+		parent::amOnPage($page);
+		$this->waitForPageLoaded();
+	}
 }

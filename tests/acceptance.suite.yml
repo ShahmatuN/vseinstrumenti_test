@@ -9,9 +9,9 @@ modules:
   enabled:
     - Asserts
     - \Helper\Acceptance:
-        host: 'localhost'
+        host: 127.0.0.1
         port: 4444
         url: 'https://www.vseinstrumenti.ru/'
         window_size: 1920x1080
         browser: 'chrome'
-        version: '83'
+        version: '60'

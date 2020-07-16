@@ -1,0 +1,20 @@
+#!/usr/bin/python
+
+import os
+import sys
+from subprocess import check_call, Popen, PIPE, call
+
+def main():
+    os.environ['DISPLAY'] = ':' + '0'
+    return run_tests()
+
+def run_tests():
+    check_call('rm -rf tests/_output/*', shell=True)
+    args = sys.argv[1:]
+    check_call(['./vendor/codeception/codeception/codecept', 'build'])
+    code = check_call(['./vendor/bin/codecept', 'run'] + args)
+
+    return code
+
+if __name__ == '__main__':
+    sys.exit(main())
